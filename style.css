@@ -1,0 +1,10 @@
+html {
+    margin: 0;
+    border: none;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #1b1c1e;
+    color: #ffffff;
+}
