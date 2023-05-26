@@ -14,36 +14,79 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     console.log("Player throws " + playerSelection);
     console.log("Computer throws " + computerSelection);
-    let winner;
+    let playerWin = 0;
+    let computerWin = 1;
+    let tie = 2;
+
     switch (computerSelection) {
         case "rock":
-            if(playerSelection == "paper") winner = "Player won with paper"
-            else if(playerSelection == computerSelection) winner = "Tie"
-            else winner = "Computer won with rock" 
-            break;
+            if(playerSelection == "paper") {
+                return playerWin;
+            }
+            else if(playerSelection == computerSelection) {
+                return tie;
+            }
+            else {
+                return computerWin ;
+            }
         case "paper":
-            if(playerSelection == "scissors") winner = "Player won with scissors"
-            else if(playerSelection == computerSelection) winner = "Tie"
-            else winner = "Computer won with paper"
-            break;
+            if(playerSelection == "scissors") {
+                return playerWin;
+            }
+            else if(playerSelection == computerSelection) {
+                return tie
+            }
+            else {
+                return computerWin;
+            }
         case "scissors":
-            if(playerSelection == "rock") winner = "Player won with rock"
-            else if(playerSelection == computerSelection) winner = "Tie"
-            else winner = "Computer won with scissors"
-            break;
+            if(playerSelection == "rock") {
+                return playerWin
+            }
+            else if(playerSelection == computerSelection) {
+                return tie
+            }
+            else {
+                return computerWin
+            }
         default:
             break;
     }
+}
 
-    return winner;
+function checkWin(winCondition, player) {
+
 }
 
 function game() {
-    const rounds = 5;
-    for (let i = 0; i < rounds; i++) {
+    const winCondition = 3;
+    let playerScore = 0;
+    let computerScore = 0;
+    let roundCount = 0;
+    let tiesCount = 0;
+    for (;;) {
         let playerSelection = prompt("Throw").toLowerCase();
-        let computerSelection = getComputerChoice();        
-        console.log(playRound(playerSelection, computerSelection));
+        let computerSelection = getComputerChoice();
+        roundCount += 1;
+        console.log("\nRound " + roundCount);
+        if(playRound(playerSelection, computerSelection) == 0) {
+            playerScore += 1;
+            if (playerScore >= winCondition) {
+                console.log(`\nPlayer won ${playerScore} to ${computerScore}\nTies: ${tiesCount}`);
+                break;
+            }
+            continue;
+        } else if(playRound(playerSelection, computerSelection) == 1) {
+            computerScore =+ 1;
+            if (computerScore >= winCondition) {
+                console.log(`\Computer won ${computerScore} to ${playerScore}\nTies: ${tiesCount}`);
+                break;
+            }
+            continue;
+        } else if(playRound(playerSelection, computerSelection) == 2) {
+            tiesCount += 1;
+            continue;
+        }
     }
 
 
