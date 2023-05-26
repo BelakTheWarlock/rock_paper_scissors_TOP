@@ -27,7 +27,7 @@ function playRound(playerSelection, computerSelection) {
                 return tie;
             }
             else {
-                return computerWin ;
+                return computerWin;
             }
         case "paper":
             if(playerSelection == "scissors") {
@@ -69,21 +69,22 @@ function game() {
         let computerSelection = getComputerChoice();
         roundCount += 1;
         console.log("\nRound " + roundCount);
-        if(playRound(playerSelection, computerSelection) == 0) {
+        let roundResult = playRound(playerSelection, computerSelection);
+        if(roundResult == 0) {
             playerScore += 1;
             if (playerScore >= winCondition) {
                 console.log(`\nPlayer won ${playerScore} to ${computerScore}\nTies: ${tiesCount}`);
                 break;
             }
             continue;
-        } else if(playRound(playerSelection, computerSelection) == 1) {
-            computerScore =+ 1;
+        } else if(roundResult == 1) {
+            computerScore += 1;
             if (computerScore >= winCondition) {
                 console.log(`\Computer won ${computerScore} to ${playerScore}\nTies: ${tiesCount}`);
                 break;
             }
             continue;
-        } else if(playRound(playerSelection, computerSelection) == 2) {
+        } else if(roundResult == 2) {
             tiesCount += 1;
             continue;
         }
