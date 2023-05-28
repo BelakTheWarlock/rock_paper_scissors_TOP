@@ -21,33 +21,42 @@ function playRound(playerSelection, computerSelection) {
     switch (computerSelection) {
         case "rock":
             if(playerSelection == "paper") {
+                console.log("You won the round! Paper beats Rock!");
                 return playerWin;
             }
             else if(playerSelection == computerSelection) {
+                console.log("Its a tie! You both chose Rock.");
                 return tie;
             }
             else {
+                console.log("You lost this round. Rock beats Scissors.");
                 return computerWin;
             }
         case "paper":
             if(playerSelection == "scissors") {
+                console.log("You won the round! Paper beats Rock!");
                 return playerWin;
             }
             else if(playerSelection == computerSelection) {
+                console.log("Its a tie! You both chose Paper.");
                 return tie
             }
             else {
+                console.log("You lost this round. Paper beats Rock.");
                 return computerWin;
             }
         case "scissors":
             if(playerSelection == "rock") {
-                return playerWin
+                console.log("You won the round! Rock beats Scissors!");
+                return playerWin;
             }
             else if(playerSelection == computerSelection) {
-                return tie
+                console.log("Its a tie! You both chose Scissors.");
+                return tie;
             }
             else {
-                return computerWin
+                console.log("You lost this round. Scissors beats Paper.");
+                return computerWin;
             }
         default:
             break;
