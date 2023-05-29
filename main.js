@@ -1,103 +1,15 @@
-/**
- *      Computer selects a throw.
- *      Player selects a throw.
- *      Compare throws.
- *      Determine Winner.
- */
+import { Game } from "./game.js"
 
-const throws = ["rock", "paper", "scissors"];
+const game = new Game();
 
-function getComputerChoice() {
-    return throws[Math.floor(Math.random() * 3)];
-}
+const pickRock =
+    document.getElementById("throw-rock")
+    .addEventListener("click", () => game.playRound(game.throws.rock));
 
-function playRound(playerSelection, computerSelection) {
-    console.log("Player throws " + playerSelection);
-    console.log("Computer throws " + computerSelection);
-    let playerWin = 0;
-    let computerWin = 1;
-    let tie = 2;
+const pickPaper =
+    document.getElementById("throw-paper")
+    .addEventListener("click", () => game.playRound(game.throws.paper));
 
-    switch (computerSelection) {
-        case "rock":
-            if(playerSelection == "paper") {
-                console.log("You won the round! Paper beats Rock!");
-                return playerWin;
-            }
-            else if(playerSelection == computerSelection) {
-                console.log("Its a tie! You both chose Rock.");
-                return tie;
-            }
-            else {
-                console.log("You lost this round. Rock beats Scissors.");
-                return computerWin;
-            }
-        case "paper":
-            if(playerSelection == "scissors") {
-                console.log("You won the round! Paper beats Rock!");
-                return playerWin;
-            }
-            else if(playerSelection == computerSelection) {
-                console.log("Its a tie! You both chose Paper.");
-                return tie
-            }
-            else {
-                console.log("You lost this round. Paper beats Rock.");
-                return computerWin;
-            }
-        case "scissors":
-            if(playerSelection == "rock") {
-                console.log("You won the round! Rock beats Scissors!");
-                return playerWin;
-            }
-            else if(playerSelection == computerSelection) {
-                console.log("Its a tie! You both chose Scissors.");
-                return tie;
-            }
-            else {
-                console.log("You lost this round. Scissors beats Paper.");
-                return computerWin;
-            }
-        default:
-            break;
-    }
-}
-
-function checkWin(winCondition, player) {
-
-}
-
-function game() {
-    const winCondition = 3;
-    let playerScore = 0;
-    let computerScore = 0;
-    let roundCount = 0;
-    let tiesCount = 0;
-    for (;;) {
-        let playerSelection = prompt("Throw").toLowerCase();
-        let computerSelection = getComputerChoice();
-        roundCount += 1;
-        console.log("\nRound " + roundCount);
-        let roundResult = playRound(playerSelection, computerSelection);
-        if(roundResult == 0) {
-            playerScore += 1;
-            if (playerScore >= winCondition) {
-                console.log(`\nPlayer won ${playerScore} to ${computerScore}\nTies: ${tiesCount}`);
-                break;
-            }
-            continue;
-        } else if(roundResult == 1) {
-            computerScore += 1;
-            if (computerScore >= winCondition) {
-                console.log(`\Computer won ${computerScore} to ${playerScore}\nTies: ${tiesCount}`);
-                break;
-            }
-            continue;
-        } else if(roundResult == 2) {
-            tiesCount += 1;
-            continue;
-        }
-    }
-
-
-}
+const pickScissors =
+    document.getElementById("throw-scissors")
+    .addEventListener("click", () => game.playRound(game.throws.scissors));

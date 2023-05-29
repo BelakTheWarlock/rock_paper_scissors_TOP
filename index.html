@@ -6,8 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="./main.js"></script>
+    <script src="./main.js" type="module"></script>
 </head>
 <body>
+    <dialog id="announcer">
+        <h2>Winner!</h2>
+        <h1 id="game-winner"></h1>
+        <div style="display: flex;">
+            <p id="close-announcer" class="button">Free Play</p>
+            <p id="reset-game" class="button">Reset</p>
+        </div>
+    </dialog>
+
+    <div id="available-player-throws" style="display: flex; justify-content: space-between;">
+        <p id="throw-rock" class="button">ROCK</p>
+        <p id="throw-paper" class="button">PAPER</p>
+        <p id="throw-scissors" class="button">SCISSORS</p>
+    </div>
+
+    <div id="results-window" class="results-window">
+        <div style="display: flex; align-items: center; justify-content: space-evenly ;">
+            <div class="last-throw-container">
+                <h3>Last Player Throw</h3>
+                <h3 id="last-player-throw">No throw</h3>
+            </div>
+            <div class="last-throw-container">
+                <h3>Last Computer Throw</h3>
+                <h3 id="last-computer-throw">No throw</h3>
+            </div>
+        </div>
+        <hr />
+        <h2 id="round-counter-container">Round: <span id="round-count">0</span>/<span id="max-rounds">0</span></h2>
+        <h3>Round Winner: <span id="round-winner">na</span></h3>
+        <h3>Player: <span id="player-score">0</span></h3>
+        <h3>Computer: <span id="computer-score">0</span></h3>
+        <h3>Tie: <span id="tie-score">0</span></h3>
+    </div>
 </body>
 </html>
